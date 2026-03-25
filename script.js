@@ -25,6 +25,7 @@ campoBusca.addEventListener('input', () => {
         const nomeBruto = produto.querySelector('h2').textContent;
         const nomeLimpo = limparTexto(nomeBruto); 
         
-        (nomeLimpo.includes(valorBusca)) ? produto.style.display = "block" : produto.style.display = "none";
+        (nomeLimpo.includes(valorBusca)) ? produto.parentElement.style.display = "block" : produto.parentElement.style.display = "none";
     });
 });
+

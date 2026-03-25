@@ -10,24 +10,25 @@ h1{
 
 .produtos { 
     display: flex;
-    justify-content: center; /* Centraliza os cards na horizontal */
-    gap: 20px;               /* Cria o espaçamento igual entre eles */
+    justify-content: center; 
+    gap: 20px;               
     padding: 20px;
 }
 
 .produto {
     border: 2px solid #333;
     padding: 10px;
-    border-radius: 8px;      /* Deixa as pontas arredondadas (estilo Streetwear) */
-    transition: all 0.3s;    /* Faz o efeito de hover ser suave, não instantâneo */
-    flex: 1;                 /* Faz com que todos os cards tenham o mesmo tamanho */
-    text-align: center;
+    border-radius: 8px;         
+    flex: 1;                 
+    text-align: center; 
+    transition: all 0.3s ease-out;
+    height: 100%;
 }
 
 .produto:hover {
-    background-color: #333;  /* Inverte as cores no hover */
-    color: white;
-    transform: scale(1.05);  /* Dá aquele efeito de aumentar levemente */
+    background-color: #333;  
+    color: #fff;
+    transform: scale(1.05);
     cursor: pointer;
 }
 
@@ -35,16 +36,37 @@ h1{
     color: #cacaca;           
 }
 
+.animacao-container {
+    opacity: 0; 
+    animation: surgir 0.8s ease-out forwards;
+    flex: 1;
+}
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animacao-container:nth-child(1) { animation-delay: 0.2s; }
+.animacao-container:nth-child(2) { animation-delay: 0.4s; }
+.animacao-container:nth-child(3) { animation-delay: 0.6s; }
+
+
 .preco {
-    display: block;    /* Faz o preço ficar em uma linha nova */
+    display: block;    
     font-weight: bold;
-    color: #2ecc71;    /* Um verde para destacar o valor */
+    color: #2ecc71;    
     margin-top: 10px;
 }
 
-/* Ajuste no hover para o preço não sumir ou mudar de cor */
+
 .produto:hover .preco {
-    color: #fff; /* Garante que o preço continue visível no fundo escuro */
+    color: #fff; 
 }
 
 footer {
@@ -67,22 +89,22 @@ footer p {
 }
 
 .icone {
-    width: 40px;  /* Define uma largura padrão */
-    height: 40px; /* Define uma altura padrão */
-    object-fit: contain; /* Garante que a imagem não distorça */
+    width: 40px;  
+    height: 40px; 
+    object-fit: contain; 
     transition: transform 0.2s;
 }
 
 .icone:hover {
-    transform: translateY(-5px); /* O ícone "pula" levemente ao passar o mouse */
-    filter: brightness(1.2);    /* Dá um brilho extra */
+    transform: translateY(-5px); 
+    filter: brightness(1.2);    
 }
 
 .btn-curtir {
     background-color: #fff;
     border: 2px solid #333;
     padding: 8px 16px;
-    border-radius: 20px; /* Deixa o botão com bordas arredondadas */
+    border-radius: 20px; 
     font-size: 16px;
     color: #333;
     cursor: pointer;
@@ -94,11 +116,11 @@ footer p {
     border: solid 2px #fff;
     background-color: #333;
     color: #fff;
-    transform: scale(1.1); /* Aumenta o botão levemente no hover */
+    transform: scale(1.1); 
 }
 
 .curtido {
-    background-color: #2ecc71 !important; /* Verde */
+    background-color: #2ecc71 !important; 
     color: #fff !important;
     border-color: #2ecc71 !important;
 }
@@ -113,12 +135,12 @@ footer p {
     padding: 10px;
     font-size: 16px;
     border: 2px solid #333;
-    border-radius: 20px; /* Deixa o campo de busca com bordas arredondadas */
+    border-radius: 20px; 
     transition: all 0.3s;
 }
 
 #campo-busca:focus {
-    border-color: #2ecc71; /* Muda a cor da borda quando o campo está em foco */
-    outline: none; /* Remove o contorno padrão do navegador */
-    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); /* Adiciona um efeito de sombra verde */
+    border-color: #2ecc71; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); 
 }
