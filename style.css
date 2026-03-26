@@ -69,6 +69,7 @@ h1{
     color: #fff; 
 }
 
+
 footer {
     padding: 20px;
     padding-top: 2px;
@@ -143,4 +144,21 @@ footer p {
     border-color: #2ecc71; 
     outline: none; 
     box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); 
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .produtos {
+        flex-direction: column; 
+        align-items: center;    
+    }
+
+    .animacao-container {
+        width: 90%; 
+    }
+
+    #campo-busca {
+        width: 80%; 
+    }
 }
