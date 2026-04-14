@@ -131,6 +131,7 @@ footer p {
     margin-bottom: 20px;
 }
 
+
 #campo-busca {
     width: 300px;
     padding: 10px;
@@ -147,6 +148,33 @@ footer p {
 }
 
 
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+    text-align: center;
+}
+.grupo-marca {
+    display: flex;
+    align-items: center;    
+    gap: 100px;              
+}
+.logo-tag {
+    max-width: 600px; 
+    height: auto;
+}
+.mascote-header {
+    max-width: 250px; 
+    height: auto;
+    animation: respirar 3s ease-in-out infinite;
+}
+@keyframes respirar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); } 
+}
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     .produtos {
@@ -160,5 +188,17 @@ footer p {
 
     #campo-busca {
         width: 80%; 
+    }
+    .grupo-marca {
+        flex-direction: column; /* Um embaixo do outro no celular */
+        gap: 10px;               /* Diminui o buraco entre eles */
+    }
+
+    .logo-tag {
+        max-width: 80%;         /* Logo se ajusta à largura do celular */
+    }
+
+    .mascote-header {
+        max-width: 100px;       /* Mascote menor para não poluir */
     }
 }
