@@ -70,3 +70,19 @@ Um filtro de busca inteligente, onde detecta diversas variações de escrita de 
 ## 🎨 Processo criativo
 
 >Diferente de templates prontos, os elementos visuais deste projeto foram rascunhados e finalizados por mim, garantindo que a interface da Acervo Street tenha uma identidade única.
+
+### 🐶 Mascote
+
+<p align="center">
+<img src="imgs_artes/Mascote.png" width="200" alt="Mascote">
+<img src="imgs_README/producaocriativa.png" width="200" alt="Producao Criativa">
+<p>
+
+
+
+### 🖼️ Logo
+
+<p align="center">
+<img src="imgs_artes/Logo.png" width="400" alt="Acervo Street Tag">
+<p>
+

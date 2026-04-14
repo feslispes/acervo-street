@@ -190,15 +190,13 @@ footer p {
         width: 80%; 
     }
     .grupo-marca {
-        flex-direction: column; /* Um embaixo do outro no celular */
-        gap: 10px;               /* Diminui o buraco entre eles */
+        flex-direction: column; 
+        gap: 10px;               
     }
-
     .logo-tag {
-        max-width: 80%;         /* Logo se ajusta à largura do celular */
+        max-width: 80%;         
     }
-
     .mascote-header {
-        max-width: 100px;       /* Mascote menor para não poluir */
+        max-width: 100px;       
     }
 }
