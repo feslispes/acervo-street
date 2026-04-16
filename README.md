@@ -25,47 +25,63 @@ Nesse projeto foi utilzado:
 
 >O site conta com algumas funcionalidades interessantes, que o deixam mais completo e funcional para o dia a dia de um comprador.
 
-### 💖 Sistema de curtidas:
-
-````javascript
-const botaoCurtir = document.querySelectorAll('.btn-curtir');
-
-botaoCurtir.forEach((botao) => {
-    botao.addEventListener('click', () => {
-        botao.textContent = 'Curtido! ✅';
-        botao.classList.toggle('curtido');
-        botao.classList.contains('curtido') ? botao.textContent = 'Curtido! ✅' : botao.textContent = '❤️ Curtir';
-    });  
-    
-}); 
-````
-
-Primeiro, eu declaro uma variável para receber a informação sempre que o botão, localizado no documento html, for clicado. 
-
-Depois, eu crio um loop(`foreach`), o algoritmo processa a interação da seguinte forma: "Para cada vez que houver um "click", no botão, ele mudará a condição do botão para `'Curtido! ✅'`. Alterando também a classe declarada no estilo do botão. Por último, se o botão obter a classe `'curtido'` no css, ele manterá a condição de `'Curtido! ✅'`, se não, ele alterará a condição para, `'❤️ Curtir'`.
-
 ### 🧹 Filtro de busca inteligente
 
 ````javascript
 const campoBusca = document.querySelector('#campo-busca');
 const listaProdutos = document.querySelectorAll('.produto');
 
-const limparTexto = (texto) => {
-    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-};
+    const limparTexto = (texto) => {
+    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove acentos e normaliza para comparação mais robusta(Expressão Regular)
+    };
 
-campoBusca.addEventListener('input', () => {
-    const valorBusca = limparTexto(campoBusca.value);
 
-    listaProdutos.forEach(produto => {
-        const nomeBruto = produto.querySelector('h2').textContent;
-        const nomeLimpo = limparTexto(nomeBruto); 
+    if (campoBusca) {
+        campoBusca.addEventListener('input', () => {
+            const valorBusca = limparTexto(campoBusca.value);
+
+            listaProdutos.forEach(produto => {
+                const elementoH2 = produto.querySelector('h2');
+                if (!elementoH2) return; 
+                
+                const nomeBruto = elementoH2.textContent;
+                const nomeLimpo = limparTexto(nomeBruto); 
+            
+                produto.parentElement.style.display = nomeLimpo.includes(valorBusca) ? "block" : "none";
+            });
+        });
+    }
+````
+Um filtro de busca inteligente, onde detecta diversas variações de escrita de todos os produtos da loja.
+
+### 💖 Sistema de curtidas:
+
+````javascript
+document.querySelectorAll('.btn-curtir').forEach(botao => {
+    botao.addEventListener('click', function() {
+        const produtoCard = this.closest('.produto');
+        if (!produtoCard) return;
         
-        (nomeLimpo.includes(valorBusca)) ? produto.parentElement.style.display = "block" : produto.parentElement.style.display = "none";
+        const id = produtoCard.getAttribute('data-id');
+        this.classList.toggle('curtido');
+        
+        let curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+        
+        if (this.classList.contains('curtido')) {
+            this.innerText = "✅ Curtido";
+            if (!curtidos.includes(id)) curtidos.push(id);
+        } else {
+            this.innerText = "❤️ Curtir";
+            curtidos = curtidos.filter(item => item !== id);
+        }
+        
+        localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
     });
 });
 ````
-Um filtro de busca inteligente, onde detecta diversas variações de escrita de todos os produtos da loja.
+
+Implementação de um sistema de curtidas no Front-End com persistência de dados client-side. A lógica manipula o DOM para interatividade visual e utiliza `JSON.parse` e `JSON.stringify` para armazenar e recuperar o array de IDs dos produtos diretamente no Local Storage. Isso garante que o estado da aplicação seja mantido entre diferentes sessões do navegador.
+
 
 ## 🎨 Processo criativo
 
@@ -85,4 +101,3 @@ Um filtro de busca inteligente, onde detecta diversas variações de escrita de 
 <p align="center">
 <img src="imgs_artes/Logo.png" width="400" alt="Acervo Street Tag">
 <p>
-
