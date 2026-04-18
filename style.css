@@ -2,78 +2,125 @@ body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
 }
-h1{
+
+/* Busca */
+.busca-container {
     text-align: center;
-    color: #333;
+    margin-bottom: 20px;
 }
-
-/* Produtos */
-.produtos { 
-    display: flex;
-    justify-content: center; 
-    gap: 20px;               
-    padding: 20px;
-}
-.produto {
-    border: 2px solid #333;
+#campo-busca {
+    width: 300px;
     padding: 10px;
-    border-radius: 8px;         
-    flex: 1;                 
-    text-align: center; 
-    transition: all 0.3s ease-out;
-    height: 100%;
+    font-size: 16px;
+    border: 2px solid #333;
+    border-radius: 20px; 
+    transition: all 0.3s;
+    
 }
-.produto:hover {
-    background-color: #333;  
-    color: #fff;
-    transform: scale(1.05);
-    cursor: pointer;
-}
-.produto:hover>p {
-    color: #cacaca;           
+#campo-busca:focus {
+    border-color: #efedea; 
+    outline: none; 
+    box-shadow: 0 0 5px #efedea; 
 }
 
-/* Animação de surgimento dos produtos */
-.animacao-container {
+/* Barra de Filtros */
+.filtros-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.btn-filtro {
+    padding: 10px 25px;
+    border: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    transition: all 0.3s ease;
+}
+.btn-filtro.ativo, .btn-filtro:hover { /* O botão preto quando está selecionado */
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Grid de Produtos */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Criação das colunas */
+    gap: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto; /* Centraliza a grade na tela */
+    padding: 0 20px;
+}
+
+/* Card do Produto */
+.produto-card {
+    text-align: left; /* Traz o texto para a esquerda como na sua imagem */
+    cursor: pointer;
     opacity: 0; 
     animation: surgir 0.8s ease-out forwards;
-    flex: 1;
 }
-@keyframes surgir {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.img-bg {
+    background-color: #efedea; 
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+    
+    /* FUNDAMENTAL: Prende o coração dentro desta caixa! */
+    position: relative; 
 }
-.animacao-container:nth-child(1) { animation-delay: 0.2s; }
-.animacao-container:nth-child(2) { animation-delay: 0.4s; }
-.animacao-container:nth-child(3) { animation-delay: 0.6s; }
+.produto-card:hover .img-bg {
+    transform: translateY(-5px);
+}
+.produto-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Remove o branco da imagem, deixando apenas as cores visíveis */
+}
+.titulo-produto {
+    font-size: 15px;
+    font-weight: normal; /* Tira o negrito pesado para ficar mais fino */
+    margin-bottom: 8px;
+    color: #333;
+    font-family: monospace; 
+}
 
-/* Preço dos produtos */
-.preco {
-    display: block;    
-    font-weight: bold;
-    color: #2ecc71;    
-    margin-top: 10px;
+/* Preços */
+.precos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.produto:hover .preco {
-    color: #fff; 
+.preco-antigo {
+    text-decoration: line-through; /* O traço cortando o preço original */
+    color: #a0a0a0;
+    font-size: 14px;
+    font-family: monospace;
+}
+.preco-atual {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    font-family: monospace;
 }
 
 /* Footer */
 footer {
     padding: 20px;
     padding-top: 2px;
-    background-color: #333;
-    margin-top: 20px;
+    background-color: #efedea;
+    margin-top: 100px;
+    
 }
 footer p {
     text-align: center;
-    color: #fff;
+    color: #000;
     font-size: 14px;
 }
 
@@ -96,46 +143,27 @@ footer p {
 
 /* Botão Curtir */
 .btn-curtir {
-    background-color: #fff;
-    border: 2px solid #333;
-    padding: 8px 16px;
-    border-radius: 20px; 
-    font-size: 16px;
-    color: #333;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #000;
     cursor: pointer;
-    transition: all 0.3s;
-    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-curtir.curtido {
+    font-size: 22px; 
 }
 .btn-curtir:hover {
-    border: solid 2px #fff;
-    background-color: #333;
-    color: #fff;
-    transform: scale(1.1); 
-}
-.curtido {
-    background-color: #2ecc71 !important; 
-    color: #fff !important;
-    border-color: #2ecc71 !important;
-}
-
-/* Busca */
-.busca-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-#campo-busca {
-    width: 300px;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-radius: 20px; 
-    transition: all 0.3s;
-}
-#campo-busca:focus {
-    border-color: #2ecc71; 
-    outline: none; 
-    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); 
-}
+    transform: scale(1.2);
+}  
 
 /* Header */
 .header-container {
@@ -163,17 +191,24 @@ footer p {
     50% { transform: translateY(-8px); } 
 }
 
+/* Animação de surgimento dos produtos */
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.produtos-grid .produto-card:nth-child(1) { animation-delay: 0.2s; }
+.produtos-grid .produto-card:nth-child(2) { animation-delay: 0.4s; }
+.produtos-grid .produto-card:nth-child(3) { animation-delay: 0.6s; }
+.produtos-grid .produto-card:nth-child(4) { animation-delay: 0.8s; }
+
 /* Responsividade */
 @media (max-width: 768px) {
-    .produtos {
-        flex-direction: column; 
-        align-items: center;    
-    }
-
-    .animacao-container {
-        width: 90%; 
-    }
-
     #campo-busca {
         width: 80%; 
     }
@@ -186,5 +221,23 @@ footer p {
     }
     .mascote-header {
         max-width: 100px;       
+    }
+}
+@media (max-width: 900px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 por linha em tablets */
+    }
+    .img-bg
+    {
+        padding: 10px; 
+    }
+}
+@media (max-width: 600px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 por linha em celulares pequenos */
+    }
+    .img-bg
+    {
+        padding: 5px; 
     }
 }
