@@ -90,16 +90,14 @@ Implementação de um sistema de curtidas no Front-End com persistência de dado
 ### 🐶 Mascote
 
 <p align="center">
-<img src="imgs_artes/Mascote.png" width="200" alt="Mascote">
+<img src="imgs_README/MascoteFundo.png" width="200" alt="Mascote">
 <img src="imgs_README/producaocriativa.png" width="200" alt="Producao Criativa">
 <p>
-
-
 
 ### 🖼️ Logo
 
 <p align="center">
-<img src="imgs_artes/Logo.png" width="400" alt="Acervo Street Tag">
+<img src="imgs_README/LogoFundo.png" width="400" alt="Acervo Street Tag">
 <p>
 
 
@@ -111,7 +109,7 @@ Espero que você tenha curtido esse projeto, foi feito com muita dedicação e c
   Desenvolvido por <b>Felipe Oliveira</b>
   <br><br>
   <a href="https://www.linkedin.com/in/felipe-oliveira-contato/">
-    <img src="imgs/1750198514415.jpg" width="100" alt="Foto de Felipe Oliveira" style="border-radius: 50%;">
+    <img src="imgs_README/1750198514415.jpg" width="100" alt="Foto de Felipe Oliveira" style="border-radius: 50%;">
   </a>
   <br><br>
   <bg>Vamos nos conectar!</bg>

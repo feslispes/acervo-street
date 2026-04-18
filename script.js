@@ -1,7 +1,6 @@
 "use strict";
 console.log("O script carregou com sucesso!");
 
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. FILTRO DE BUSCA INTELIGENTE ---
     const campoBusca = document.querySelector('#campo-busca');
