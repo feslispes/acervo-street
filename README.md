@@ -29,25 +29,24 @@ Nesse projeto foi utilzado:
 
 ````javascript
 const campoBusca = document.querySelector('#campo-busca');
-const listaProdutos = document.querySelectorAll('.produto');
+    const listaProdutos = document.querySelectorAll('.produto-card');
 
     const limparTexto = (texto) => {
-    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove acentos e normaliza para comparação mais robusta(Expressão Regular)
+        return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove acentos e normaliza para comparação mais robusta(Expressão Regular)
     };
-
 
     if (campoBusca) {
         campoBusca.addEventListener('input', () => {
             const valorBusca = limparTexto(campoBusca.value);
 
             listaProdutos.forEach(produto => {
-                const elementoH2 = produto.querySelector('h2');
-                if (!elementoH2) return; 
+                const elementoTitulo = produto.querySelector('.titulo-produto');
+                if (!elementoTitulo) return; 
                 
-                const nomeBruto = elementoH2.textContent;
+                const nomeBruto = elementoTitulo.textContent;
                 const nomeLimpo = limparTexto(nomeBruto); 
-            
-                produto.parentElement.style.display = nomeLimpo.includes(valorBusca) ? "block" : "none";
+                
+                produto.style.display = nomeLimpo.includes(valorBusca) ? "grid" : "none";
             });
         });
     }
@@ -58,26 +57,27 @@ Um filtro de busca inteligente, onde detecta diversas variações de escrita de 
 
 ````javascript
 document.querySelectorAll('.btn-curtir').forEach(botao => {
-    botao.addEventListener('click', function() {
-        const produtoCard = this.closest('.produto');
-        if (!produtoCard) return;
-        
-        const id = produtoCard.getAttribute('data-id');
-        this.classList.toggle('curtido');
-        
-        let curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
-        
-        if (this.classList.contains('curtido')) {
-            this.innerText = "✅ Curtido";
-            if (!curtidos.includes(id)) curtidos.push(id);
-        } else {
-            this.innerText = "❤️ Curtir";
-            curtidos = curtidos.filter(item => item !== id);
-        }
-        
-        localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
+        botao.addEventListener('click', function() {
+            const produtoCard = this.closest('.produto-card');
+            if (!produtoCard) return;
+            
+            const id = produtoCard.getAttribute('data-id');
+            this.classList.toggle('curtido');
+
+            // Lógica de salvar/remover do Local Storage
+            let curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+            
+            if (this.classList.contains('curtido')) {
+                this.innerText = "❤"; // Preenchido
+                if (!curtidos.includes(id)) curtidos.push(id);
+            } else {
+                this.innerText = "♡"; // Vazio
+                curtidos = curtidos.filter(item => item !== id);
+            }
+            
+            localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
+        });
     });
-});
 ````
 
 Implementação de um sistema de curtidas no Front-End com persistência de dados client-side. A lógica manipula o DOM para interatividade visual e utiliza `JSON.parse` e `JSON.stringify` para armazenar e recuperar o array de IDs dos produtos diretamente no Local Storage. Isso garante que o estado da aplicação seja mantido entre diferentes sessões do navegador.
