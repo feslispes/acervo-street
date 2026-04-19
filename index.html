@@ -10,13 +10,32 @@
 
 
 <body>
-    <header>
-    <div class="header-container">
-        <div class="grupo-marca">
-            <img src="imgs_artes/Mascote.png" alt="Mascote" class="mascote-header">
-            <img src="imgs_artes/Logo.png" alt="Acervo Street Tag" class="logo-tag">
+
+    <header class="header-principal">
+        <!-- Navegação Superior -->
+        <nav class="header-nav">
+            <div class="nav-inicio">
+                <a href="index.html" class="link-nav">Início</a>
+            </div>
+
+            <div class="logo-container">
+                <h1 class="logo">ACERVO STREET</h1>
+            </div>
+
+            <div class="nav-lista">
+                <button id="btn-curtidos" class="btn-icon">
+                    ❤ Lista de Desejos <span id="contador-curtidas">0</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Banner Principal com Mascote e Logo -->
+        <div class="header-banner">
+            <div class="grupo-marca">
+                <img src="imgs_artes/Mascote.png" alt="Mascote" class="mascote-header">
+                <a href="index.html"><img src="imgs_artes/Logo.png" alt="Acervo Street Tag" class="logo-tag"></a>
+            </div>
         </div>
-    </div>
 </header>
 
     <div class="busca-container">
@@ -108,4 +127,3 @@
 </body>
 
 </html>
-

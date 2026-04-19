@@ -1,12 +1,14 @@
 body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Busca */
 .busca-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 #campo-busca {
     width: 300px;
@@ -70,8 +72,6 @@ body{
     border-radius: 4px;
     margin-bottom: 15px;
     transition: transform 0.3s ease;
-    
-    /* FUNDAMENTAL: Prende o coração dentro desta caixa! */
     position: relative; 
 }
 .produto-card:hover .img-bg {
@@ -166,10 +166,77 @@ footer p {
 }  
 
 /* Header */
-.header-container {
+.header-nav {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #efedea;
+}
+.nav-inicio {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+.logo-container {
+    flex: 1;
     display: flex;
     justify-content: center;
-    padding: 100px 0;
+}
+.nav-lista {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.link-nav {
+    text-decoration: none;
+    color: #000;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+.link-nav:hover {
+    opacity: 0.6;
+}
+.logo {
+    font-family: monospace;
+    font-size: 22px;
+    letter-spacing: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 16px;
+    color: #000;
+    transition: opacity 0.3s;
+}
+.btn-icon:hover {
+    opacity: 0.6;
+}
+#contador-curtidas {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: 5px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+/* Banner Principal com Mascote */
+.header-banner {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
     text-align: center;
 }
 .grupo-marca {
@@ -215,12 +282,14 @@ footer p {
     .grupo-marca {
         flex-direction: column; 
         gap: 10px;               
+        gap: 20px;               
     }
     .logo-tag {
         max-width: 80%;         
     }
     .mascote-header {
         max-width: 100px;       
+        max-width: 120px;       
     }
 }
 @media (max-width: 900px) {

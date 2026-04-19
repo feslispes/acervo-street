@@ -66,8 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
+            atualizarContadorHeader(); // Atualiza o número no header instantaneamente
         });
     });
 
     carregarCurtidas();
+
+    function atualizarContadorHeader() {
+    const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+    const contador = document.getElementById('contador-curtidas');
+    if (contador) {
+        contador.innerText = curtidos.length;
+    }
+}
+    atualizarContadorHeader();
+
 });
