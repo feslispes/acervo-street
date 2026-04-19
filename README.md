@@ -53,7 +53,7 @@ const campoBusca = document.querySelector('#campo-busca');
 ````
 Um filtro de busca inteligente, onde detecta diversas variações de escrita de todos os produtos da loja.
 
-### 💖 Sistema de curtidas:
+### 💖 Sistema de curtidas
 
 ````javascript
 document.querySelectorAll('.btn-curtir').forEach(botao => {
@@ -81,6 +81,20 @@ document.querySelectorAll('.btn-curtir').forEach(botao => {
 ````
 
 Implementação de um sistema de curtidas no Front-End com persistência de dados client-side. A lógica manipula o DOM para interatividade visual e utiliza `JSON.parse` e `JSON.stringify` para armazenar e recuperar o array de IDs dos produtos diretamente no Local Storage. Isso garante que o estado da aplicação seja mantido entre diferentes sessões do navegador.
+
+### ⭐ Lista de Desejos
+
+````javascript
+function atualizarContadorHeader() {
+    const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+    const contador = document.getElementById('contador-curtidas');
+    if (contador) {
+        contador.innerText = curtidos.length;
+    }
+}
+    atualizarContadorHeader();
+````
+Implementei um sistema de Lista de Desejos (Wishlist) integrado ao cabeçalho do site. Em vez de um carrinho convencional, o usuário "curte" os achados de streetwear que deseja revisitar. Esta funcionalidade demonstra o uso de Manipulação do DOM e Data Binding manual.
 
 
 ## 🎨 Processo criativo
