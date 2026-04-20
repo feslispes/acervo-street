@@ -81,4 +81,52 @@ document.addEventListener('DOMContentLoaded', () => {
 }
     atualizarContadorHeader();
 
+    // 3. Sistema do Side Drawer (Gaveta de Wishlist)
+    const btnAbrirWishlist = document.getElementById('btn-curtidos');
+    const btnFecharWishlist = document.getElementById('btn-fechar-wishlist');
+    const sidebarWishlist = document.getElementById('wishlist-sidebar');
+    const overlayWishlist = document.getElementById('wishlist-overlay');
+    const listaContainer = document.getElementById('lista-favoritos');
+    const sidebarFooter = document.getElementById('sidebar-footer');
+
+    const toggleWishlist = () => {
+        sidebarWishlist.classList.toggle('ativo');
+        overlayWishlist.classList.toggle('ativo');
+        // Só renderiza os itens se a gaveta estiver sendo aberta
+        if (sidebarWishlist.classList.contains('ativo')) {
+            renderizarWishlist();
+        }
+    };
+
+    if (btnAbrirWishlist) btnAbrirWishlist.addEventListener('click', toggleWishlist);
+    if (btnFecharWishlist) btnFecharWishlist.addEventListener('click', toggleWishlist);
+    if (overlayWishlist) overlayWishlist.addEventListener('click', toggleWishlist); // Fecha ao clicar fora
+
+    function renderizarWishlist() {
+        const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+        listaContainer.innerHTML = ''; // Limpa a lista antes de adicionar
+
+        (curtidos.length === 0) ? sidebarFooter.innerHTML = '<p style="text-align: center; font-family: monospace;">Sua lista de desejos está vazia. 💔</p>' 
+        : sidebarFooter.innerHTML = '<p style="text-align: center; font-family: monospace;">Gostou? Clique no item para ver detalhes e comprar!</p>';
+
+        curtidos.forEach(id => {
+            const produtoCard = document.querySelector(`.produto-card[data-id="${id}"]`);
+            if (produtoCard) {
+                const imgSrc = produtoCard.querySelector('img').src;
+                const titulo = produtoCard.querySelector('.titulo-produto').textContent;
+                const preco = produtoCard.querySelector('.preco-atual').textContent;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item-wishlist';
+                itemDiv.innerHTML = `
+                    <img src="${imgSrc}" alt="${titulo}">
+                    <div class="item-wishlist-info">
+                        <h4>${titulo}</h4>
+                        <p>${preco}</p>
+                    </div>
+                `;
+                listaContainer.appendChild(itemDiv);
+            }
+        });
+    }
 });
