@@ -115,16 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgSrc = produtoCard.querySelector('img').src;
                 const titulo = produtoCard.querySelector('.titulo-produto').textContent;
                 const preco = produtoCard.querySelector('.preco-atual').textContent;
-
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'item-wishlist';
                 itemDiv.innerHTML = `
                     <img src="${imgSrc}" alt="${titulo}">
                     <div class="item-wishlist-info">
                         <h4>${titulo}</h4>
-                        <p>${preco}</p>
-                    </div>
-                `;
+                        <p>${preco}</p></div>`;
                 listaContainer.appendChild(itemDiv);
             }
         });

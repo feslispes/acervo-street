@@ -82,7 +82,7 @@ document.querySelectorAll('.btn-curtir').forEach(botao => {
 
 Implementação de um sistema de curtidas no Front-End com persistência de dados client-side. A lógica manipula o DOM para interatividade visual e utiliza `JSON.parse` e `JSON.stringify` para armazenar e recuperar o array de IDs dos produtos diretamente no Local Storage. Isso garante que o estado da aplicação seja mantido entre diferentes sessões do navegador.
 
-### ⭐ Lista de Desejos
+### ⭐ Lista de Desejos & Side Drawer (Gaveta Lateral)
 
 ````javascript
 function atualizarContadorHeader() {
@@ -93,9 +93,45 @@ function atualizarContadorHeader() {
     }
 }
     atualizarContadorHeader();
+(...)
+     const toggleWishlist = () => {
+        sidebarWishlist.classList.toggle('ativo');
+        overlayWishlist.classList.toggle('ativo');
+        // Só renderiza os itens se a gaveta estiver sendo aberta
+        if (sidebarWishlist.classList.contains('ativo')) {
+            renderizarWishlist();
+        }
+    };
+(...)
+    function renderizarWishlist() {
+        const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+        listaContainer.innerHTML = ''; // Limpa a lista antes de adicionar
+(...)
+        curtidos.forEach(id => {
+            const produtoCard = document.querySelector(`.produto-card[data-id="${id}"]`);
+            if (produtoCard) {
+                const imgSrc = produtoCard.querySelector('img').src;
+                const titulo = produtoCard.querySelector('.titulo-produto').textContent;
+                const preco = produtoCard.querySelector('.preco-atual').textContent;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item-wishlist';
+                itemDiv.innerHTML = `
+                    <img src="${imgSrc}" alt="${titulo}">
+                    <div class="item-wishlist-info">
+                        <h4>${titulo}</h4>
+                        <p>${preco}</p></div>`;
+                listaContainer.appendChild(itemDiv);
+            }
+        });
 ````
-Implementei um sistema de Lista de Desejos (Wishlist) integrado ao cabeçalho do site. Em vez de um carrinho convencional, o usuário "curte" os achados de streetwear que deseja revisitar. Esta funcionalidade demonstra o uso de Manipulação do DOM e Data Binding manual.
+Implementei um sistema de Lista de Desejos (Wishlist) integrado ao cabeçalho do site. Em vez de um carrinho convencional, o usuário "curte" os achados de streetwear que deseja revisitar.
 
+Esta funcionalidade demonstra conceitos avançados de Front-end, como:
+
+- Manipulação Dinâmica do DOM.
+- Data Binding Manual.
+- Side Drawer UI (Gaveta Lateral).
+- Persistência com Local Storage.
 
 ## 🎨 Processo criativo
 
