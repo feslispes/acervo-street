@@ -133,6 +133,27 @@ Esta funcionalidade demonstra conceitos avançados de Front-end, como:
 - Side Drawer UI (Gaveta Lateral).
 - Persistência com Local Storage.
 
+### 🏗️ Arquitetura Modular e Separação de Responsabilidades (SoC)
+
+> Para garantir a escalabilidade e a manutenibilidade da **Acervo Street**, a arquitetura do Front-end foi refatorada para aplicar o princípio de **Separation of Concerns (Separação de Preocupações)**. 
+
+**📁 `js/produtos.js` (Camada de Dados)**
+````javascript
+const produtosAcervo = [
+    {
+        id: "moletom-essentials",
+        nome: "Moletom Oversized Essentials (Bege)",
+        categoria: "moletom",
+        precoAntigo: "R$ 180,00",
+        precoAtual: "R$ 119,90",
+        imagem: "imgs_produtos/kit-moletom.png",
+        link: "[https://sua-url-de-afiliado.com/produto1](https://sua-url-de-afiliado.com/produto1)"
+    },
+    (...)
+]
+````
+Atua como o nosso banco de dados estático. Ele armazena exclusivamente o Array de objetos (os produtos de afiliados). Isso permite que a atualização do catálogo seja feita de forma ágil e segura, sem o risco de alterar regras de interface.
+
 ## 🎨 Processo criativo
 
 >Diferente de templates prontos, os elementos visuais deste projeto foram rascunhados e finalizados por mim, garantindo que a interface da Acervo Street tenha uma identidade única.
