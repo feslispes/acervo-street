@@ -30,7 +30,7 @@ const produtosAcervo = [
     {
         id: "tenis-skate-chunky",
         nome: "Tênis Chunky Skater 90s",
-        categoria: "tenis",
+        categoria: "moletom",
         precoAntigo: "R$ 250,00",
         precoAtual: "R$ 189,90",
         imagem: "imgs_produtos/kit-moletom.png",
@@ -43,9 +43,7 @@ function renderizarProdutos(categoriaFiltro = 'todos') {
     const vitrine = document.getElementById('vitrine-produtos');
     vitrine.innerHTML = ""; 
 
-    const produtosFiltrados = categoriaFiltro === 'todos' 
-        ? produtosAcervo 
-        : produtosAcervo.filter(p => p.categoria === categoriaFiltro);
+    const produtosFiltrados = categoriaFiltro === 'todos' ? produtosAcervo : produtosAcervo.filter(p => p.categoria === categoriaFiltro);
 
     produtosFiltrados.forEach(produto => {
         const cardHTML = `
@@ -65,11 +63,8 @@ function renderizarProdutos(categoriaFiltro = 'todos') {
         `;
         vitrine.insertAdjacentHTML('beforeend', cardHTML);
     });
-
     // Reativa as curtidas na tela
     if (typeof carregarCurtidas === 'function') carregarCurtidas();
     if (typeof atualizarContadorHeader === 'function') atualizarContadorHeader();
 }
-
-// Inicia a loja ao abrir o site
 renderizarProdutos();

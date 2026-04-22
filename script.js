@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Sistema de Curtidas (LOCAL STORAGE)
-    function carregarCurtidas() {
+    // Tornamos a função global (window) para que o produtos.js consiga chamá-la
+    window.carregarCurtidas = function() {
         const curtidosSalvos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];        
         
         document.querySelectorAll('.produto-card').forEach(produto => {
@@ -44,42 +45,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }
+    };
 
-    document.querySelectorAll('.btn-curtir').forEach(botao => {
-        botao.addEventListener('click', function() {
-            const produtoCard = this.closest('.produto-card');
+    // Delegação de eventos: funciona mesmo em produtos recém-criados pelo filtro
+    document.addEventListener('click', function(e) {
+        const btnCurtir = e.target.closest('.btn-curtir');
+        if (btnCurtir) {
+            const produtoCard = btnCurtir.closest('.produto-card');
             if (!produtoCard) return;
             
             const id = produtoCard.getAttribute('data-id');
-            this.classList.toggle('curtido');
+            btnCurtir.classList.toggle('curtido');
 
             // Lógica de salvar/remover do Local Storage
             let curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
             
-            if (this.classList.contains('curtido')) {
-                this.innerText = "❤"; // Preenchido
+            if (btnCurtir.classList.contains('curtido')) {
+                btnCurtir.innerText = "❤"; // Preenchido
                 if (!curtidos.includes(id)) curtidos.push(id);
             } else {
-                this.innerText = "♡"; // Vazio
+                btnCurtir.innerText = "♡"; // Vazio
                 curtidos = curtidos.filter(item => item !== id);
             }
             
             localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
-            atualizarContadorHeader(); // Atualiza o número no header instantaneamente
-        });
+            window.atualizarContadorHeader(); // Atualiza o número no header instantaneamente
+        }
     });
 
-    carregarCurtidas();
+    window.carregarCurtidas();
 
-    function atualizarContadorHeader() {
-    const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
-    const contador = document.getElementById('contador-curtidas');
-    if (contador) {
-        contador.innerText = curtidos.length;
-    }
-}
-    atualizarContadorHeader();
+    window.atualizarContadorHeader = function() {
+        const curtidos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];
+        const contador = document.getElementById('contador-curtidas');
+        if (contador) {
+            contador.innerText = curtidos.length;
+        }
+    };
+    window.atualizarContadorHeader();
 
     // 3. Sistema do Side Drawer (Gaveta de Wishlist)
     const btnAbrirWishlist = document.getElementById('btn-curtidos');
@@ -126,4 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 4. Filtro por Categorias
+    const botoesFiltro = document.querySelectorAll('.btn-filtro');
+    
+    botoesFiltro.forEach(botao => {
+        botao.addEventListener('click', function() {
+            botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
+            this.classList.add('ativo');
+            const categoria = this.getAttribute('data-categoria');
+            if (typeof renderizarProdutos === 'function') renderizarProdutos(categoria);
+        });
+    });
+    
 });
