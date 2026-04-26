@@ -2,7 +2,41 @@
 console.log("O script carregou com sucesso!");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Filtro de Busca Inteligente
+
+    // 1. Função que desenha os produtos na tela
+    function renderizarProdutos(categoriaFiltro = 'todos') {
+    const vitrine = document.getElementById('vitrine-produtos');
+    if (!vitrine) return; // Evita erro em páginas que não possuem a vitrine
+    vitrine.innerHTML = ""; 
+
+    const produtosFiltrados = categoriaFiltro === 'todos' ? produtosAcervo : produtosAcervo.filter(p => p.categoria === categoriaFiltro);
+
+    produtosFiltrados.forEach(produto => {
+        const cardHTML = `
+            <article class="produto-card" data-id="${produto.id}" data-categoria="${produto.categoria}">
+                <div class="img-bg">
+                    <a href="produtos.html?id=${produto.id}">
+                        <img src="${produto.imagem}" alt="${produto.nome}"></a>
+                    <button class="btn-curtir">♡</button>
+                </div>
+                <div class="info-produto">
+                    <h3 class="titulo-produto">${produto.nome}</h3>
+                    <div class="precos">
+                        ${produto.precoAntigo ? `<span class="preco-antigo">${produto.precoAntigo}</span>` : ''}
+                        <span class="preco-atual">${produto.precoAtual}</span>
+                    </div>
+                </div>
+            </article>
+        `;
+        vitrine.insertAdjacentHTML('beforeend', cardHTML);
+    });
+    // Reativa as curtidas na tela
+    if (typeof carregarCurtidas === 'function') carregarCurtidas();
+    if (typeof atualizarContadorHeader === 'function') atualizarContadorHeader();
+}
+renderizarProdutos();
+
+    // 2. Filtro de Busca Inteligente
     const campoBusca = document.querySelector('#campo-busca');
     const listaProdutos = document.querySelectorAll('.produto-card');
 
@@ -26,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Sistema de Curtidas (LOCAL STORAGE)
+    // 3. Sistema de Curtidas (LOCAL STORAGE)
     // Tornamos a função global (window) para que o produtos.js consiga chamá-la
     window.carregarCurtidas = function() {
         const curtidosSalvos = JSON.parse(localStorage.getItem('produtosCurtidos')) || [];        
@@ -51,10 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', function(e) {
         const btnCurtir = e.target.closest('.btn-curtir');
         if (btnCurtir) {
-            const produtoCard = btnCurtir.closest('.produto-card');
-            if (!produtoCard) return;
+            const elementoProduto = btnCurtir.closest('.produto-card') || btnCurtir.closest('.item-wishlist');
+            if (!elementoProduto) return;
             
-            const id = produtoCard.getAttribute('data-id');
+            const id = elementoProduto.getAttribute('data-id');
             btnCurtir.classList.toggle('curtido');
 
             // Lógica de salvar/remover do Local Storage
@@ -70,6 +104,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             localStorage.setItem('produtosCurtidos', JSON.stringify(curtidos));
             window.atualizarContadorHeader(); // Atualiza o número no header instantaneamente
+            window.carregarCurtidas(); // Sincroniza a remoção do curtir com a vitrine na hora
+            
+            // Se a gaveta estiver aberta, atualiza ela em tempo real
+            const sidebarWishlist = document.getElementById('wishlist-sidebar');
+            if (sidebarWishlist && sidebarWishlist.classList.contains('ativo') && typeof renderizarWishlist === 'function') {
+                const itemNaGaveta = btnCurtir.closest('.item-wishlist');
+                if (itemNaGaveta) {
+                    itemNaGaveta.classList.add('removendo');
+                    setTimeout(() => {
+                        renderizarWishlist();
+                    }, 300); // Aguarda exatos 300ms da animação CSS antes de re-renderizar
+                } else {
+                    renderizarWishlist();
+                }
+            }
         }
     });
 
@@ -84,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.atualizarContadorHeader();
 
-    // 3. Sistema do Side Drawer (Gaveta de Wishlist)
+    // 4. Sistema do Side Drawer (Gaveta de Wishlist)
     const btnAbrirWishlist = document.getElementById('btn-curtidos');
     const btnFecharWishlist = document.getElementById('btn-fechar-wishlist');
     const sidebarWishlist = document.getElementById('wishlist-sidebar');
@@ -113,24 +162,28 @@ document.addEventListener('DOMContentLoaded', () => {
         : sidebarFooter.innerHTML = '<p style="text-align: center; font-family: monospace;">Gostou? Clique no item para ver detalhes e comprar!</p>';
 
         curtidos.forEach(id => {
-            const produtoCard = document.querySelector(`.produto-card[data-id="${id}"]`);
-            if (produtoCard) {
-                const imgSrc = produtoCard.querySelector('img').src;
-                const titulo = produtoCard.querySelector('.titulo-produto').textContent;
-                const preco = produtoCard.querySelector('.preco-atual').textContent;
+            // Busca as informações do produto direto no "banco de dados" produtosAcervo
+            if (typeof produtosAcervo === 'undefined') return;
+            const produto = produtosAcervo.find(p => p.id === id);
+            
+            if (produto) {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'item-wishlist';
+                itemDiv.setAttribute('data-id', produto.id);
                 itemDiv.innerHTML = `
-                    <img src="${imgSrc}" alt="${titulo}">
-                    <div class="item-wishlist-info">
-                        <h4>${titulo}</h4>
-                        <p>${preco}</p></div>`;
+                    <a href="produtos.html?id=${produto.id}">
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                        <div class="item-wishlist-info">
+                            <h4>${produto.nome}</h4>
+                            <p>${produto.precoAtual}</p></div>
+                    </a>
+                    <button class="btn-curtir curtido">❤</button>`;
                 listaContainer.appendChild(itemDiv);
             }
         });
     }
 
-    // 4. Filtro por Categorias
+    // 5. Filtro por Categorias
     const botoesFiltro = document.querySelectorAll('.btn-filtro');
     
     botoesFiltro.forEach(botao => {

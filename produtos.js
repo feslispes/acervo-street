@@ -6,8 +6,11 @@ const produtosAcervo = [
         categoria: "moletom",
         precoAntigo: "R$ 180,00",
         precoAtual: "R$ 119,90",
+        descricao: "Calça com recortes e pesponto contrastante Tecido: Moletom Fleece Padrão Felpado Composição: 50% Algodão, 50% Poliéster",
         imagem: "imgs_produtos/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto1"
+        link: "https://sua-url-de-afiliado.com/produto1",
+        tamanhos: ["P", "M", "G", "GG", "EGG"],
+        imagens: ["imgs_produtos/kit-moletom.png", "imgs_produtos/kit-moletom-costas.png", "imgs_produtos/kit-moletom-detalhe.png"]
     },
     {
         id: "calca-cargo-parachute",
@@ -15,8 +18,11 @@ const produtosAcervo = [
         categoria: "calcas",
         precoAntigo: "",
         precoAtual: "R$ 145,00",
+        descricao: "",
         imagem: "imgs_produtos/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto2"
+        link: "https://sua-url-de-afiliado.com/produto2",
+        tamanhos: ["38", "40", "42", "44", "46"],
+        imagens: ["imgs_produtos/kit-moletom.png", "imgs_produtos/outra-foto.png","s","s","s"]
     },
     {
         id: "camiseta-heavy-weight",
@@ -24,8 +30,10 @@ const produtosAcervo = [
         categoria: "camisetas",
         precoAntigo: "R$ 90,00",
         precoAtual: "R$ 65,00",
+        descricao: "",
         imagem: "imgs_produtos/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto3"
+        link: "https://sua-url-de-afiliado.com/produto3",
+        tamanhos: ["P", "M", "G", "GG"]
     },
     {
         id: "tenis-skate-chunky",
@@ -33,38 +41,9 @@ const produtosAcervo = [
         categoria: "moletom",
         precoAntigo: "R$ 250,00",
         precoAtual: "R$ 189,90",
+        descricao: "",
         imagem: "imgs_produtos/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto4"
+        link: "https://sua-url-de-afiliado.com/produto4",
+        tamanhos: ["38", "39", "40", "41", "42", "43"]
     }
 ];
-
-// 2. Função que desenha os produtos na tela
-function renderizarProdutos(categoriaFiltro = 'todos') {
-    const vitrine = document.getElementById('vitrine-produtos');
-    vitrine.innerHTML = ""; 
-
-    const produtosFiltrados = categoriaFiltro === 'todos' ? produtosAcervo : produtosAcervo.filter(p => p.categoria === categoriaFiltro);
-
-    produtosFiltrados.forEach(produto => {
-        const cardHTML = `
-            <article class="produto-card" data-id="${produto.id}" data-categoria="${produto.categoria}">
-                <div class="img-bg">
-                        <img src="${produto.imagem}" alt="${produto.nome}">
-                    <button class="btn-curtir">♡</button>
-                </div>
-                <div class="info-produto">
-                    <h3 class="titulo-produto">${produto.nome}</h3>
-                    <div class="precos">
-                        ${produto.precoAntigo ? `<span class="preco-antigo">${produto.precoAntigo}</span>` : ''}
-                        <span class="preco-atual">${produto.precoAtual}</span>
-                    </div>
-                </div>
-            </article>
-        `;
-        vitrine.insertAdjacentHTML('beforeend', cardHTML);
-    });
-    // Reativa as curtidas na tela
-    if (typeof carregarCurtidas === 'function') carregarCurtidas();
-    if (typeof atualizarContadorHeader === 'function') atualizarContadorHeader();
-}
-renderizarProdutos();

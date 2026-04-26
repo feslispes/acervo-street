@@ -344,11 +344,27 @@ footer p {
 }
 /* Estilo dos itens dentro da gaveta */
 .item-wishlist {
-    display: flex;
-    gap: 15px;
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #eaeaea;
+    position: relative;
+    padding-right: 40px; /* Evita que o texto sobreponha o botão */
+    transition: all 0.3s ease;
+}
+.item-wishlist.removendo {
+    opacity: 0;
+    transform: translateX(50px);
+}
+.item-wishlist a {
+    display: flex;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+.item-wishlist a:hover {
+    opacity: 0.7;
+    transform: translateX(5px); /* Move o item 5 pixels para a direita */
 }
 .item-wishlist img {
     width: 80px;
@@ -373,6 +389,10 @@ footer p {
     font-weight: bold;
     font-size: 15px;
     font-family: monospace;
+}
+.item-wishlist .btn-curtir {
+    top: -5px;
+    right: 0;
 }
 
 /* Responsividade */

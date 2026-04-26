@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleproduto.css">
     <title>Acervo Street</title>
 </head>
-
-
 <body>
 
     <header class="header-principal">
@@ -28,34 +27,18 @@
                 </button>
             </div>
         </nav>
+    </header>
 
-        <!-- Banner Principal com Mascote e Logo -->
-        <div class="header-banner">
-            <div class="grupo-marca">
-                <img src="imgs_artes/Mascote.png" alt="Mascote" class="mascote-header">
-                <a href="index.html"><img src="imgs_artes/Logo.png" alt="Acervo Street Tag" class="logo-tag"></a>
-            </div>
+    <main id="conteudo-produto">
+        </main>
+
+        <section class="secao-relacionados">
+    <h2 class="titulo-relacionados">Produtos relacionados</h2>
+    <div class="produtos-grid" id="grid-relacionados">
         </div>
-</header>
+</section>
 
-    <div class="busca-container">
-    <input type="text" id="campo-busca" placeholder="O que você procura?">
-    </div>
-
-    <nav class="filtros-container">
-        <button class="btn-filtro ativo" data-categoria="todos">Todos</button>
-        <button class="btn-filtro" data-categoria="camisetas">Camisetas</button>
-        <button class="btn-filtro" data-categoria="calcas">Bermudas/Calças</button>
-        <button class="btn-filtro" data-categoria="moletom">Moletom</button>
-        <button class="btn-filtro" data-categoria="acessorios">Acessórios</button>
-        <button class="btn-filtro" data-categoria="kits">Conjuntos</button>
-    </nav>
-
-    <main>
-    <section class="produtos-grid" id="vitrine-produtos">
-    </section></main>
-
-    <footer>
+        <footer>
        <div>
         <p>Feito por Felipe Oliveira</p>
        </div>   
@@ -84,9 +67,8 @@
     
 </aside>
 
-    <script src="produtos.js"></script>
     <script src="script.js"></script>
-
+    <script src="produtos.js"></script>
+    <script src="produtos-detalhes.js"></script>
 </body>
-
 </html>
