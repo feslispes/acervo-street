@@ -3,6 +3,7 @@ body{
     font-size: 20px;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Previne que o site inteiro role para os lados no celular */
 }
 
 /* Busca */

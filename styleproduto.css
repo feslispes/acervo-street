@@ -79,10 +79,13 @@
 .botoes-tamanho {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap; /* No computador, quebra a linha se faltar espaço */
 }
 
 .btn-tamanho {
-    width: 40px;
+    width: auto; /* Permite que o botão cresça conforme o texto */
+    min-width: 40px; /* Garante que as letras únicas não fiquem finas demais */
+    padding: 0 10px; /* Dá um respiro nas laterais do texto */
     height: 40px;
     background: transparent;
     border: 1px solid #ccc;
@@ -163,5 +166,23 @@
     }
     .favoritar-view.produto-card {
         justify-content: center;
+    }
+    
+    /* Carrossel de Tamanhos exclusivo para o Mobile */
+    .botoes-tamanho {
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+        scroll-snap-type: x mandatory; 
+        padding-bottom: 5px; 
+        scrollbar-width: none; 
+        max-width: 100%; /* Trava o tamanho do carrossel para não esticar a tela principal */
+    }
+    .botoes-tamanho::-webkit-scrollbar {
+        display: none; 
+    }
+    .btn-tamanho {
+        flex-shrink: 0; 
+        scroll-snap-align: start; 
     }
 }

@@ -1,6 +1,15 @@
 "use strict";
 console.log("O script carregou com sucesso!");
 
+// Controle de versão para limpar o localStorage em atualizações
+const VERSAO_ATUAL = "1.0.0"; // Mude este valor a cada nova atualização estrutural na nuvem
+const versaoSalva = localStorage.getItem('versaoSite');
+
+if (versaoSalva !== VERSAO_ATUAL) {
+    localStorage.clear(); // Limpa os dados salvos anteriormente (incluindo os favoritos antigos)
+    localStorage.setItem('versaoSite', VERSAO_ATUAL); // Salva a nova versão no navegador do usuário
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Função que desenha os produtos na tela
@@ -38,7 +47,6 @@ renderizarProdutos();
 
     // 2. Filtro de Busca Inteligente
     const campoBusca = document.querySelector('#campo-busca');
-    const listaProdutos = document.querySelectorAll('.produto-card');
 
     const limparTexto = (texto) => {
         return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove acentos e normaliza para comparação mais robusta(Expressão Regular)
@@ -47,16 +55,38 @@ renderizarProdutos();
     if (campoBusca) {
         campoBusca.addEventListener('input', () => {
             const valorBusca = limparTexto(campoBusca.value);
+            let encontrouAlgum = false;
+            
+            // Pega a lista atualizada de produtos toda vez que digitar, 
+            // pois os botões de categoria recriam os cards na tela!
+            const produtosAtuais = document.querySelectorAll('.produto-card');
 
-            listaProdutos.forEach(produto => {
+            produtosAtuais.forEach(produto => {
                 const elementoTitulo = produto.querySelector('.titulo-produto');
                 if (!elementoTitulo) return; 
                 
                 const nomeBruto = elementoTitulo.textContent;
                 const nomeLimpo = limparTexto(nomeBruto); 
                 
-                produto.style.display = nomeLimpo.includes(valorBusca) ? "grid" : "none";
+                const corresponde = nomeLimpo.includes(valorBusca);
+                produto.style.display = corresponde ? "grid" : "none";
+                
+                if (corresponde) encontrouAlgum = true;
             });
+
+            // Mensagem de Feedback Vazio
+            let msgVazia = document.getElementById('msg-busca-vazia');
+            if (!encontrouAlgum) {
+                if (!msgVazia) {
+                    const vitrine = document.getElementById('vitrine-produtos');
+                    // O 'grid-column: 1 / -1' faz a mensagem ocupar a linha inteira da sua grade
+                    if (vitrine) vitrine.insertAdjacentHTML('beforeend', '<div id="msg-busca-vazia" style="grid-column: 1 / -1; text-align: center; padding: 40px; font-family: monospace; font-size: 18px; color: #555;">Nenhum produto encontrado para sua busca. 😕</div>');
+                } else {
+                    msgVazia.style.display = "block";
+                }
+            } else if (msgVazia) {
+                msgVazia.style.display = "none";
+            }
         });
     }
 

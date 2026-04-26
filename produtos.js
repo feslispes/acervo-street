@@ -1,16 +1,16 @@
 // 1. Catálogo de Roupas (Hardcoded)
 const produtosAcervo = [
     {
-        id: "moletom-essentials",
-        nome: "Moletom Oversized Essentials (Bege)",
-        categoria: "moletom",
-        precoAntigo: "R$ 180,00",
-        precoAtual: "R$ 119,90",
-        descricao: "Calça com recortes e pesponto contrastante Tecido: Moletom Fleece Padrão Felpado Composição: 50% Algodão, 50% Poliéster",
-        imagem: "imgs_produtos/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto1",
-        tamanhos: ["P", "M", "G", "GG", "EGG"],
-        imagens: ["imgs_produtos/kit-moletom.png", "imgs_produtos/kit-moletom-costas.png", "imgs_produtos/kit-moletom-detalhe.png"]
+        id: "camiseta-maclaren",
+        nome: "Camiseta Sponsorships Mclaren - Honda",
+        categoria: "camisetas",
+        precoAntigo: "R$ 54,90",
+        precoAtual: "R$ 52,15",
+        descricao: "Tecido: material 100%  Algodão, um material composto por: Fio 30.1 A combinação desses fios, trás leveza e conforto.",
+        imagem: "imgs_produtos/camiseta-maclaren.png",
+        link: "https://shopee.com.br/Camiseta-Sponsorships-Mclaren-Honda-100-Algod%C3%A3o-unissex-i.1078834714.20397807832?xptdk=eb54dea2-10fc-4d7e-ac3d-5316744f754d",
+        tamanhos: ["P", "M", "G", "GG", "XG/G1", "XXG/G2", "XXXG/G3", "XXXXG/G4", "XXXXXG/G5"],
+        imagens: ["imgs_produtos/camiseta-maclaren.png", "imgs_produtos/camiseta-maclaren2.png", "imgs_produtos/camiseta-maclaren3.png", "imgs_produtos/camiseta-maclaren4.png", "imgs_produtos/camiseta-maclaren5.png"]
     },
     {
         id: "calca-cargo-parachute",
