@@ -91,6 +91,67 @@ if (produtoEncontrado) {
     
     if (typeof window.carregarCurtidas === 'function') window.carregarCurtidas();
 
+    // 5. Adiciona o efeito de Zoom na imagem de destaque
+    const imgContainer = document.querySelector('.imagem-destaque');
+    const imgPrincipal = document.getElementById('img-principal');
+
+    if (imgContainer && imgPrincipal) {
+        // Função isolada para calcular e aplicar o zoom
+        const aplicarZoom = (x, y) => {
+            const rect = imgContainer.getBoundingClientRect();
+            const posX = x - rect.left;
+            const posY = y - rect.top;
+            const xPercent = (posX / rect.width) * 100;
+            const yPercent = (posY / rect.height) * 100;
+            imgPrincipal.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            imgPrincipal.style.transform = 'scale(2)'; // Aumenta a imagem em 2x
+        };
+
+        const removerZoom = () => {
+            imgPrincipal.style.transformOrigin = 'center center';
+            imgPrincipal.style.transform = 'scale(1)'; // Retorna a imagem ao tamanho original
+        };
+
+        let zoomAtivo = false;
+        let ehTouch = false;
+
+        // Eventos para Mouse (Desktop)
+        imgContainer.addEventListener('click', e => {
+            if (ehTouch) return; // Impede conflito com o evento de toque no Mobile
+            zoomAtivo = !zoomAtivo; // Alterna entre ligado e desligado
+            
+            if (zoomAtivo) {
+                aplicarZoom(e.clientX, e.clientY);
+                imgContainer.style.cursor = 'zoom-out'; // Muda a "lupa" para indicar que vai diminuir
+            } else {
+                removerZoom();
+                imgContainer.style.cursor = 'zoom-in'; // Retorna para a indicação de aumentar
+            }
+        });
+
+        imgContainer.addEventListener('mousemove', e => {
+            if (zoomAtivo && !ehTouch) aplicarZoom(e.clientX, e.clientY);
+        });
+
+        imgContainer.addEventListener('mouseleave', () => {
+            if (ehTouch) return;
+            zoomAtivo = false;
+            removerZoom();
+            imgContainer.style.cursor = 'zoom-in';
+        });
+
+        // Eventos para Toque (Mobile)
+        imgContainer.addEventListener('touchstart', e => {
+            ehTouch = true;
+            aplicarZoom(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        imgContainer.addEventListener('touchmove', e => {
+            e.preventDefault(); // Impede a rolagem da página enquanto o usuário arrasta o dedo na imagem
+            aplicarZoom(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: false });
+        imgContainer.addEventListener('touchend', removerZoom);
+    }
+
 } else {
     container.innerHTML = `<h2 style="text-align: center; margin-top: 50px;">Produto não encontrado.</h2>`;
 }

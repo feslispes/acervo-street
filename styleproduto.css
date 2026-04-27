@@ -42,11 +42,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Esconde a parte da imagem que transborda */
+    cursor: zoom-in; /* Altera o ponteiro do mouse para indicar a interação */
 }
 
 .imagem-destaque img {
     width: 100%;
     object-fit: cover;
+    transition: transform 0.1s ease-out; /* Suaviza a transição do zoom e da movimentação */
 }
 
 /* --- DIREITA: INFORMAÇÕES --- */
@@ -79,7 +82,7 @@
 .botoes-tamanho {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap; /* No computador, quebra a linha se faltar espaço */
+    flex-wrap: wrap; /* No desktop, os botões quebram a linha normalmente */
 }
 
 .btn-tamanho {
@@ -166,23 +169,5 @@
     }
     .favoritar-view.produto-card {
         justify-content: center;
-    }
-    
-    /* Carrossel de Tamanhos exclusivo para o Mobile */
-    .botoes-tamanho {
-        flex-wrap: nowrap; 
-        overflow-x: auto; 
-        -webkit-overflow-scrolling: touch; 
-        scroll-snap-type: x mandatory; 
-        padding-bottom: 5px; 
-        scrollbar-width: none; 
-        max-width: 100%; /* Trava o tamanho do carrossel para não esticar a tela principal */
-    }
-    .botoes-tamanho::-webkit-scrollbar {
-        display: none; 
-    }
-    .btn-tamanho {
-        flex-shrink: 0; 
-        scroll-snap-align: start; 
     }
 }
