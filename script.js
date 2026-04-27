@@ -2,7 +2,7 @@
 console.log("O script carregou com sucesso!");
 
 // Controle de versão para limpar o localStorage em atualizações
-const VERSAO_ATUAL = "1.0.0"; // Mude este valor a cada nova atualização estrutural na nuvem
+const VERSAO_ATUAL = "1.0.1"; // Mude este valor a cada nova atualização estrutural na nuvem
 const versaoSalva = localStorage.getItem('versaoSite');
 
 if (versaoSalva !== VERSAO_ATUAL) {

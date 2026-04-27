@@ -13,37 +13,51 @@ const produtosAcervo = [
         imagens: ["imgs/maclaren/camiseta-maclaren.png", "imgs/maclaren/camiseta-maclaren2.png", "imgs/maclaren/camiseta-maclaren3.png", "imgs/maclaren/camiseta-maclaren4.png", "imgs/maclaren/camiseta-maclaren5.png"]
     },
     {
-        id: "calca-cargo-parachute",
-        nome: "Calça Parachute Y2K (Preta)",
-        categoria: "calcas",
-        precoAntigo: "",
-        precoAtual: "R$ 145,00",
-        descricao: "",
-        imagem: "imgs/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto2",
-        tamanhos: ["38", "40", "42", "44", "46"],
-        imagens: ["imgs/kit-moletom.png", "imgs/outra-foto.png","s","s","s"]
-    },
-    {
-        id: "camiseta-heavy-weight",
-        nome: "T-Shirt Heavy Cotton Boxy",
+        id: "camiseta-tyler",
+        nome: 'Camisa Polo Oversized Tyler, the Creator "Bee Boy"',
         categoria: "camisetas",
-        precoAntigo: "R$ 90,00",
-        precoAtual: "R$ 65,00",
-        descricao: "",
-        imagem: "imgs/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto3",
-        tamanhos: ["P", "M", "G", "GG"]
+        precoAntigo: "126,90",
+        precoAtual: "R$ 101,52",
+        descricao: "Camisa polo inspirada na estética de Tyler, the Creator, unindo o estilo Hip-Hop Street com um design gráfico exclusivo.<br><br>Design: Listras horizontais com botões frontais e estampas de figuras e letras.<br><br>Caimento: Modelagem solta com ombro caído para um visual moderno e confortável.<br><br>Material: Confeccionada em tecido flexível (95% poliéster e 5% elastano).<br><br>Uso: Ideal para as estações de Primavera e Verão.<br><br>Praticidade: Tecido não translúcido e de fácil manutenção (lavagem à mão).",
+        imagem: "imgs/tyler/tyler.png",
+        link: "https://onelink.shein.com/4/5nrdj4pwp35s",
+        tamanhos: ["P", "M", "G", "GG"],
+        imagens: ["imgs/tyler/tyler.png", "imgs/tyler/tyler2.png", "imgs/tyler/tyler3.png", "imgs/tyler/tyler4.png"]
     },
     {
-        id: "tenis-skate-chunky",
-        nome: "Tênis Chunky Skater 90s",
-        categoria: "casacos",
-        precoAntigo: "R$ 250,00",
-        precoAtual: "R$ 189,90",
-        descricao: "",
-        imagem: "imgs/kit-moletom.png",
-        link: "https://sua-url-de-afiliado.com/produto4",
-        tamanhos: ["38", "39", "40", "41", "42", "43"]
+        id: "camiseta-astroboy",
+        nome: "Jersey Streetwear Astro Boy – Edição Especial Robot 83",
+        categoria: "camisetas",
+        precoAntigo: "R$ 93,90",
+        precoAtual: "R$ 79,82",
+        descricao: "Leve a nostalgia do maior ícone dos animes para o seu guarda-roupa com a Jersey Astro Boy Robot 83. Esta peça une o estilo clássico das camisas de esporte americanas com a estética vibrante do streetwear moderno.<br><br>Corte Oversized: Modelagem ampla com gola V, garantindo conforto total e aquele caimento baggy que é tendência absoluta no estilo urbano.<br><br>Detalhes Premium: Mangas numeradas e ícones espaciais que dão um toque autêntico de merchandise de colecionador.",
+        imagem: "imgs/astroboy/astro.png",
+        link: "https://onelink.shein.com/4/5nrdlbn56kui",
+        tamanhos: ["P", "M", "G", "GG","EG"],
+        imagens: ["imgs/astroboy/astro.png", "imgs/astroboy/astro2.png", "imgs/astroboy/astro3.png", "imgs/astroboy/astro4.png", "imgs/astroboy/astro5.png"]
+    },
+    {
+        id: "camiseta-luckyhand",
+        nome: "Camisa Streetwear 777 - Lucky Hand",
+        categoria: "camisetas",
+        precoAntigo: "R$ 94,99",
+        precoAtual: "R$ 80,74",
+        descricao: "Estilo Hip-Hop autêntico com acabamento premium e costuras brancas contrastantes.<br><br>Design: Estampa frontal do numeral 777 e gráfico detalhado, com fechamento clássico em botões.<br><br>Caimento: Modelagem solta comorte: Modelagem solta (oversized) e gola de camisa, garantindo conforto para o verão.<br><brMaterial: 100% Poliéster resistente, tecido firme e não translúcido.<br><br>Uso: Ideal para as estações de Primavera e Verão.<br><Detalhes: Inclui bolso funcional e abertura central com botões.",
+        imagem: "imgs/777/777.png",
+        link: "https://onelink.shein.com/4/5nrds4az6sfs",
+        tamanhos: ["P", "M", "G", "GG","EG"],
+        imagens: ["imgs/777/777.png", "imgs/777/7772.png", "imgs/777/7773.png", "imgs/777/7774.png"]
+    },
+        {
+        id: "camiseta-cruz",
+        nome: "Camiseta Urban Black",
+        categoria: "camisetas",
+        precoAntigo: "R$ 89,99",
+        precoAtual: "R$ 71,99",
+        descricao: "Estilo: Peça casual com ajuste regular, perfeita para um visual urbano e moderno.<br><br>Destaques: Conta com aplicações de strass e gola redonda clássica.<br><br>Acabamento: Detalhes de cintura contrastada e bainha estreita que valorizam o caimento.<br><br>Material: Tecido leve de verão produzido em 95% poliéster e 5% elastano.",
+        imagem: "imgs/cruz/cruz.png",
+        link: "https://onelink.shein.com/4/5nrdprgnb0v8",
+        tamanhos: ["P", "M", "G", "GG","EG"],
+        imagens: ["imgs/cruz/cruz.png", "imgs/cruz/cruz2.png", "imgs/cruz/cruz3.png", "imgs/cruz/cruz4.png"]
     }
 ];
