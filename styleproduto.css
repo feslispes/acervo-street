@@ -147,6 +147,15 @@
     margin: 60px 0 30px 0;
     font-weight: normal;
 }
+
+/* Container do Botão Carregar Mais (Relacionados) */
+#container-btn-relacionados {
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0;
+    animation: surgir 0.8s ease-out forwards;
+    animation-delay: 0.8s; /* Aparece depois dos 4 itens */
+}
         
 /*Responsividade*/
 @media (max-width: 768px) {

@@ -6,11 +6,11 @@ const produtosAcervo = [
         categoria: "camisetas",
         precoAntigo: "R$ 54,90",
         precoAtual: "R$ 52,15",
-        descricao: "Tecido: material 100%  Algodão, um material composto por: Fio 30.1 A combinação desses fios, trás leveza e conforto.",
-        imagem: "imgs/maclaren/camiseta-maclaren.png",
+        descricao: "Tecido: 100% Algodão (Fio 30.1).<br><br>A combinação desses fios traz leveza e conforto, ideal para o uso diário.",
+        imagem: "imgs/maclaren/camiseta-maclaren.webp",
         link: "https://shopee.com.br/Camiseta-Sponsorships-Mclaren-Honda-100-Algod%C3%A3o-unissex-i.1078834714.20397807832?xptdk=eb54dea2-10fc-4d7e-ac3d-5316744f754d",
         tamanhos: ["P", "M", "G", "GG", "XG/G1", "XXG/G2", "XXXG/G3"],
-        imagens: ["imgs/maclaren/camiseta-maclaren.png", "imgs/maclaren/camiseta-maclaren2.png", "imgs/maclaren/camiseta-maclaren3.png", "imgs/maclaren/camiseta-maclaren4.png", "imgs/maclaren/camiseta-maclaren5.png"]
+        imagens: ["imgs/maclaren/camiseta-maclaren.webp", "imgs/maclaren/camiseta-maclaren2.webp", "imgs/maclaren/camiseta-maclaren3.webp", "imgs/maclaren/camiseta-maclaren4.webp", "imgs/maclaren/camiseta-maclaren5.webp"]
     },
     {
         id: "camiseta-tyler",
@@ -19,10 +19,10 @@ const produtosAcervo = [
         precoAntigo: "126,90",
         precoAtual: "R$ 101,52",
         descricao: "Camisa polo inspirada na estética de Tyler, the Creator, unindo o estilo Hip-Hop Street com um design gráfico exclusivo.<br><br>Design: Listras horizontais com botões frontais e estampas de figuras e letras.<br><br>Caimento: Modelagem solta com ombro caído para um visual moderno e confortável.<br><br>Material: Confeccionada em tecido flexível (95% poliéster e 5% elastano).<br><br>Uso: Ideal para as estações de Primavera e Verão.<br><br>Praticidade: Tecido não translúcido e de fácil manutenção (lavagem à mão).",
-        imagem: "imgs/tyler/tyler.png",
+        imagem: "imgs/tyler/tyler.webp",
         link: "https://onelink.shein.com/4/5nrdj4pwp35s",
         tamanhos: ["P", "M", "G", "GG"],
-        imagens: ["imgs/tyler/tyler.png", "imgs/tyler/tyler2.png", "imgs/tyler/tyler3.png", "imgs/tyler/tyler4.png"]
+        imagens: ["imgs/tyler/tyler.webp", "imgs/tyler/tyler2.webp", "imgs/tyler/tyler3.webp", "imgs/tyler/tyler4.webp"]
     },
     {
         id: "camiseta-astroboy",
@@ -31,10 +31,10 @@ const produtosAcervo = [
         precoAntigo: "R$ 93,90",
         precoAtual: "R$ 79,82",
         descricao: "Leve a nostalgia do maior ícone dos animes para o seu guarda-roupa com a Jersey Astro Boy Robot 83. Esta peça une o estilo clássico das camisas de esporte americanas com a estética vibrante do streetwear moderno.<br><br>Corte Oversized: Modelagem ampla com gola V, garantindo conforto total e aquele caimento baggy que é tendência absoluta no estilo urbano.<br><br>Detalhes Premium: Mangas numeradas e ícones espaciais que dão um toque autêntico de merchandise de colecionador.",
-        imagem: "imgs/astroboy/astro.png",
+        imagem: "imgs/astroboy/astro.webp",
         link: "https://onelink.shein.com/4/5nrdlbn56kui",
         tamanhos: ["P", "M", "G", "GG","EG"],
-        imagens: ["imgs/astroboy/astro.png", "imgs/astroboy/astro2.png", "imgs/astroboy/astro3.png", "imgs/astroboy/astro4.png", "imgs/astroboy/astro5.png"]
+        imagens: ["imgs/astroboy/astro.webp", "imgs/astroboy/astro2.webp", "imgs/astroboy/astro3.webp", "imgs/astroboy/astro4.webp", "imgs/astroboy/astro5.webp"]
     },
     {
         id: "camiseta-luckyhand",
@@ -42,22 +42,94 @@ const produtosAcervo = [
         categoria: "camisetas",
         precoAntigo: "R$ 94,99",
         precoAtual: "R$ 80,74",
-        descricao: "Estilo Hip-Hop autêntico com acabamento premium e costuras brancas contrastantes.<br><br>Design: Estampa frontal do numeral 777 e gráfico detalhado, com fechamento clássico em botões.<br><br>Caimento: Modelagem solta comorte: Modelagem solta (oversized) e gola de camisa, garantindo conforto para o verão.<br><brMaterial: 100% Poliéster resistente, tecido firme e não translúcido.<br><br>Uso: Ideal para as estações de Primavera e Verão.<br><Detalhes: Inclui bolso funcional e abertura central com botões.",
-        imagem: "imgs/777/777.png",
+        descricao: "Estilo Hip-Hop autêntico com acabamento premium e costuras brancas contrastantes.<br><br>Design: Estampa frontal do numeral 777 e gráfico detalhado, com fechamento clássico em botões.<br><br>Caimento: Modelagem solta (oversized) e gola de camisa, garantindo conforto para o verão.<br><br>Material: 100% Poliéster resistente, tecido firme e não translúcido.<br><br>Uso: Ideal para as estações de Primavera e Verão.<br><br>Detalhes: Inclui bolso funcional e abertura central com botões.",
+        imagem: "imgs/777/777.webp",
         link: "https://onelink.shein.com/4/5nrds4az6sfs",
         tamanhos: ["P", "M", "G", "GG","EG"],
-        imagens: ["imgs/777/777.png", "imgs/777/7772.png", "imgs/777/7773.png", "imgs/777/7774.png"]
+        imagens: ["imgs/777/777.webp", "imgs/777/7772.webp", "imgs/777/7773.webp", "imgs/777/7774.webp"]
     },
-        {
+    {
         id: "camiseta-cruz",
         nome: "Camiseta Urban Black",
         categoria: "camisetas",
         precoAntigo: "R$ 89,99",
         precoAtual: "R$ 71,99",
         descricao: "Estilo: Peça casual com ajuste regular, perfeita para um visual urbano e moderno.<br><br>Destaques: Conta com aplicações de strass e gola redonda clássica.<br><br>Acabamento: Detalhes de cintura contrastada e bainha estreita que valorizam o caimento.<br><br>Material: Tecido leve de verão produzido em 95% poliéster e 5% elastano.",
-        imagem: "imgs/cruz/cruz.png",
+        imagem: "imgs/cruz/cruz.webp",
         link: "https://onelink.shein.com/4/5nrdprgnb0v8",
         tamanhos: ["P", "M", "G", "GG","EG"],
-        imagens: ["imgs/cruz/cruz.png", "imgs/cruz/cruz2.png", "imgs/cruz/cruz3.png", "imgs/cruz/cruz4.png"]
+        imagens: ["imgs/cruz/cruz.webp", "imgs/cruz/cruz2.webp", "imgs/cruz/cruz3.webp", "imgs/cruz/cruz4.webp"]
+    },
+    {
+        id: "camiseta-playboy-carti",
+        nome: "Camiseta Oversized Streetwear Playboi Carti I Am Music",
+        categoria: "camisetas",
+        precoAntigo: "",
+        precoAtual: "R$ 85,50",
+        descricao: "“I AM MUSIC” – pra quem vive o som, o estilo e a atitude. Essa peça carrega o espírito da Opium, com referências diretas a Playboi Carti, e o universo underground da moda street.<br><br>Detalhes que pesam no drip: 100% Algodão Premium<br><br>Gramatura 180g – tecido encorpado, resistente e confortável<br><br>Modelagem Oversized – caimento largo e estiloso, do jeito que a cena gosta<br><br>Gola Canelada 3cm – imponente, firme, com presença<br><br>Visual dark, autêntico e exclusivo. Perfeito pra quem carrega a estética Opium",
+        imagem: "imgs/carti/carti1.webp",
+        link: "https://s.shopee.com.br/70GXGTOVtb",
+        tamanhos: ["P", "M", "G", "GG","G1", "G2", "G3"],
+        imagens: ["imgs/carti/carti1.webp", "imgs/carti/carti.webp", "imgs/carti/carti2.webp", "imgs/carti/carti3.webp"]
+    },
+    {
+        id: "calca-jogger-masculina",
+        nome: "Calça Jogger Masculina Casual com Recorte de Cor",
+        categoria: "calcas",
+        precoAntigo: "R$ 151,99",
+        precoAtual: "R$ 121,59",
+        descricao: "Modelo e caimento: Calça jogger com modelagem de perna reta e caimento solto<br><br>Cor e estilo: Preta, com visual esportivo e casual para o dia a dia<br><br>Cintura e ajuste: Cintura com cordão ajustável<br><br>Detalhes: Bolsos laterais e linhas contrastantes<br><br>Material: Tecido de malha, 100% poliéster, sem elasticidade e sem forro",
+        imagem: "imgs/calcajogger/jogger.webp",
+        link: "https://onelink.shein.com/4/5nty7lzdi1ai",
+        tamanhos: ["S", "M", "L", "XL","XXL"],
+        imagens: ["imgs/calcajogger/jogger.webp", "imgs/calcajogger/jogger2.webp", "imgs/calcajogger/jogger3.webp", "imgs/calcajogger/jogger4.webp", "imgs/calcajogger/jogger5.webp"]
+    },
+    {
+        id: "calca-jeans-preto-dazzling",
+        nome: "Calça Jeans-Preto Dazzling Larga Balão/Baggy",
+        categoria: "calcas",
+        precoAntigo: "R$ 160,00",
+        precoAtual: "R$ 119,99",
+        descricao: "Peça de grande qualidade com estética de vanguarda, ideal para quem busca o caimento oversized perfeito no streetwear.<br><br>Modelagem: Corte solto com perna larga e reta, garantindo conforto e estilo unissex.<br><br>Material Premium: Confeccionada em 100% Algodão (Jeans), oferecendo durabilidade e elasticidade média para o dia a dia.<br><br>Detalhes Técnicos: Fechamento frontal por zíper, cintura de altura natural e bolsos funcionais.<br><br>Versatilidade: Comprimento longo e design 'Preto e Branco' (estonado), sendo uma escolha diferenciada para compor qualquer kit.",
+        imagem: "imgs/calcajeans/jeans.webp",
+        link: "https://onelink.shein.com/4/5ntychl4ix4h",
+        tamanhos: ["40", "42", "44", "46","48", "50", "52"],
+        imagens: ["imgs/calcajeans/jeans.webp", "imgs/calcajeans/jeans2.webp", "imgs/calcajeans/jeans3.webp", "imgs/calcajeans/jeans4.webp"]
+    },
+    {
+        id: "short-bermuda-moletom-cortez",
+        nome: "Short Bermuda de Moletom Cortez",
+        categoria: "calcas",
+        precoAntigo: "R$ 79,80",
+        precoAtual: "R$ 52,67",
+        descricao: "Principais características do Short<br><br>- Modelo: Short/Bermuda Masculino<br><br>- Design: Possui 2 bolsos laterais, cordão regulável, ilhós para transpassar, elástico na cintura e viés na bainha.<br><br>- Disponível nos tamanhos: P, M, G, GG<br><br>- Tecido: Feito de Moletom, proporcionando uma sensação agradável ao toque.",
+        imagem: "imgs/short-cortez/shortcortez.webp",
+        link: "https://s.shopee.com.br/5L8JoWShW7",
+        tamanhos: ["P", "M", "G", "GG"],
+        imagens: ["imgs/short-cortez/shortcortez.webp", "imgs/short-cortez/shortcortez2.webp", "imgs/short-cortez/shortcortez3.webp", "imgs/short-cortez/shortcortez4.webp"]
+    },
+    {
+        id: "calca-jeans-wide-leg-feminino",
+        nome: "Calça Jeans Wide Leg Feminino",
+        categoria: "calcas",
+        precoAntigo: "",
+        precoAtual: "R$ 135,80",
+        descricao: "Jeans wide leg de estilo streetwear com design exclusivo de recortes em ondas. Unindo o retrô ao moderno, destaca-se pelo patchwork de diferentes lavagens e caimento ultra folgado.<br><br>Estilo: Baggy / Utilitário.<br><br>Destaque: Detalhes de costura curva e lavagem vintage estonada.<br><br>Conforto: Modelagem ampla em 100% algodão.<br><br>Vibe: Urbana, despojada e autêntica.<br><br>Perfeita para quem busca uma peça statement para o dia a dia.",
+        imagem: "imgs/jeansfeminino/jeansfeminino.webp",
+        link: "https://s.shopee.com.br/5VRk1v8mKw",
+        tamanhos: ["S", "M", "L", "XL","XXL"],
+        imagens: ["imgs/jeansfeminino/jeansfeminino.webp", "imgs/jeansfeminino/jeansfeminino2.webp", "imgs/jeansfeminino/jeansfeminino3.webp", "imgs/jeansfeminino/jeansfeminino4.webp"]
+    },
+    {
+        id: "calca-cargo-feminina-wide-leg",
+        nome: "Calça Casual Streetwear Reta Feminina Wide Leg",
+        categoria: "calcas",
+        precoAntigo: "",
+        precoAtual: "R$ 85,00",
+        descricao: "Perfeita para quem busca conforto com estilo no dia a dia! A calça Streetwear tem corte reto, bolsos laterais e cós com Elástico Premium. O tecido é macio e respirável, ideal para dias mais frios ou para momentos de descanso e lazer.<br><br>• Material: 100% Algodão<br><br>• Cós: Elástico Premium<br><br>• Modelagem: Reta, com bolsos laterais<br><br>• Tecido leve e confortável, Ideal para uso casual, treinos leves ou relaxar em casa<br><br>• Estampa: DTF Importado",
+        imagem: "imgs/casualfeminina/casualfeminina.webp",
+        link: "https://s.shopee.com.br/8KlvQiondZ",
+        tamanhos: ["P", "M", "G", "GG"],
+        imagens: ["imgs/casualfeminina/casualfeminina.webp", "imgs/casualfeminina/casualfeminina2.webp"]
     }
 ];

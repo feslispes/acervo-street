@@ -2,7 +2,7 @@
 console.log("O script carregou com sucesso!");
 
 // Controle de versão para limpar o localStorage em atualizações
-const VERSAO_ATUAL = "1.0.1"; // Mude este valor a cada nova atualização estrutural na nuvem
+const VERSAO_ATUAL = "1.0.2"; // Mude este valor a cada nova atualização estrutural na nuvem
 const versaoSalva = localStorage.getItem('versaoSite');
 
 if (versaoSalva !== VERSAO_ATUAL) {
@@ -12,16 +12,45 @@ if (versaoSalva !== VERSAO_ATUAL) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Função que desenha os produtos na tela
+    let produtosFiltradosEmbaralhados = [];
+    let produtosExibidosCount = 0;
+
+    // 1. Funções para renderizar produtos com botão "Carregar Mais"
     function renderizarProdutos(categoriaFiltro = 'todos') {
-    const vitrine = document.getElementById('vitrine-produtos');
-    if (!vitrine) return; // Evita erro em páginas que não possuem a vitrine
-    vitrine.innerHTML = ""; 
+        const vitrine = document.getElementById('vitrine-produtos');
+        if (!vitrine) return;
+        vitrine.innerHTML = "";
 
-    const produtosFiltrados = categoriaFiltro === 'todos' ? produtosAcervo : produtosAcervo.filter(p => p.categoria === categoriaFiltro);
+        const botaoExistente = document.getElementById('container-btn-principal');
+        if (botaoExistente) botaoExistente.remove();
 
-    produtosFiltrados.forEach(produto => {
-        const cardHTML = `
+        produtosFiltradosEmbaralhados = (categoriaFiltro === 'todos' ? [...produtosAcervo] : produtosAcervo.filter(p => p.categoria === categoriaFiltro))
+            .sort(() => Math.random() - 0.5);
+
+        if (produtosFiltradosEmbaralhados.length === 0) {
+            vitrine.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; font-family: monospace; font-size: 18px; color: #555;">Nenhum produto cadastrado nesta categoria ainda. 🚧</div>';
+            return;
+        }
+
+        // Verifica se é mobile (<= 768px) para exibir 8 itens, senão exibe 12
+        const limiteAtual = window.innerWidth <= 768 ? 8 : 12;
+        const produtosIniciais = produtosFiltradosEmbaralhados.slice(0, limiteAtual);
+        
+        produtosIniciais.forEach(produto => {
+            vitrine.insertAdjacentHTML('beforeend', criarCardProdutoHTML(produto));
+        });
+        produtosExibidosCount = produtosIniciais.length;
+
+        if (produtosFiltradosEmbaralhados.length > produtosExibidosCount) {
+            adicionarBotaoCarregarMaisPrincipal();
+        }
+
+        if (typeof carregarCurtidas === 'function') carregarCurtidas();
+        if (typeof atualizarContadorHeader === 'function') atualizarContadorHeader();
+    }
+
+    function criarCardProdutoHTML(produto) {
+        return `
             <article class="produto-card" data-id="${produto.id}" data-categoria="${produto.categoria}">
                 <div class="img-bg">
                     <a href="produtos.html?id=${produto.id}">
@@ -37,13 +66,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </article>
         `;
-        vitrine.insertAdjacentHTML('beforeend', cardHTML);
-    });
-    // Reativa as curtidas na tela
-    if (typeof carregarCurtidas === 'function') carregarCurtidas();
-    if (typeof atualizarContadorHeader === 'function') atualizarContadorHeader();
-}
-renderizarProdutos();
+    }
+
+    function adicionarBotaoCarregarMaisPrincipal() {
+        const vitrine = document.getElementById('vitrine-produtos');
+        if (!vitrine) return;
+
+        const containerBotao = document.createElement('div');
+        containerBotao.id = 'container-btn-principal';
+        containerBotao.innerHTML = `<button id="btn-carregar-principal" class="btn-filtro">Carregar Mais</button>`;
+        vitrine.appendChild(containerBotao);
+
+        document.getElementById('btn-carregar-principal').addEventListener('click', carregarMaisProdutosPrincipal);
+    }
+
+    function carregarMaisProdutosPrincipal() {
+        const vitrine = document.getElementById('vitrine-produtos');
+        const botaoContainer = document.getElementById('container-btn-principal');
+        const produtosRestantes = produtosFiltradosEmbaralhados.slice(produtosExibidosCount);
+
+        produtosRestantes.forEach(produto => {
+            botaoContainer.insertAdjacentHTML('beforebegin', criarCardProdutoHTML(produto));
+        });
+
+        produtosExibidosCount += produtosRestantes.length;
+        botaoContainer.remove();
+        if (typeof carregarCurtidas === 'function') carregarCurtidas();
+    }
+
+    renderizarProdutos(); // Chamada inicial
 
     // 2. Filtro de Busca Inteligente
     const campoBusca = document.querySelector('#campo-busca');
@@ -214,14 +265,14 @@ renderizarProdutos();
     }
 
     // 5. Filtro por Categorias
-    const botoesFiltro = document.querySelectorAll('.btn-filtro');
+    const botoesFiltro = document.querySelectorAll('.btn-filtro[data-categoria]');
     
     botoesFiltro.forEach(botao => {
         botao.addEventListener('click', function() {
             botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
             this.classList.add('ativo');
             const categoria = this.getAttribute('data-categoria');
-            if (typeof renderizarProdutos === 'function') renderizarProdutos(categoria);
+            renderizarProdutos(categoria);
         });
     });
     

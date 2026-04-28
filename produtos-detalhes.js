@@ -63,31 +63,53 @@ if (produtoEncontrado) {
         </div>
     `;
 
-    // 4. Renderiza os Produtos Relacionados (Filtra a mesma categoria, exclui o atual, pega 3 ou 4 itens)
-    const produtosRelacionados = produtosAcervo
+    // 4. Renderiza os Produtos Relacionados com botão "Carregar Mais"
+    const todosProdutosRelacionados = produtosAcervo
         .filter(p => p.categoria === produtoEncontrado.categoria && p.id !== produtoEncontrado.id)
-        .slice(0, 4);
+        .sort(() => Math.random() - 0.5); // Embaralha
 
-    produtosRelacionados.forEach(produto => {
-        const cardHTML = `
-            <article class="produto-card" data-id="${produto.id}">
-                <div class="img-bg" style="position: relative;">
-                    <a href="produtos.html?id=${produto.id}">
-                        <img src="${produto.imagem}" alt="${produto.nome}" style="width: 100%;">
-                    </a>
-                    <button class="btn-curtir">♡</button>
+    const produtosIniciais = todosProdutosRelacionados.slice(0, 4);
+
+    const criarCardRelacionado = (produto) => `
+        <article class="produto-card" data-id="${produto.id}">
+            <div class="img-bg" style="position: relative;">
+                <a href="produtos.html?id=${produto.id}">
+                    <img src="${produto.imagem}" alt="${produto.nome}" style="width: 100%;">
+                </a>
+                <button class="btn-curtir">♡</button>
+            </div>
+            <div class="info-produto">
+                <h3 class="titulo-produto">${produto.nome}</h3>
+                <div class="precos">
+                    ${produto.precoAntigo ? `<span class="preco-antigo">${produto.precoAntigo}</span>` : ''}
+                    <span class="preco-atual">${produto.precoAtual}</span>
                 </div>
-                <div class="info-produto">
-                    <h3 class="titulo-produto">${produto.nome}</h3>
-                    <div class="precos">
-                        ${produto.precoAntigo ? `<span class="preco-antigo">${produto.precoAntigo}</span>` : ''}
-                        <span class="preco-atual">${produto.precoAtual}</span>
-                    </div>
-                </div>
-            </article>
-        `;
-        containerRelacionados.insertAdjacentHTML('beforeend', cardHTML);
+            </div>
+        </article>
+    `;
+
+    produtosIniciais.forEach(produto => {
+        containerRelacionados.insertAdjacentHTML('beforeend', criarCardRelacionado(produto));
     });
+    
+    if (todosProdutosRelacionados.length > 4) {
+        const containerBotao = document.createElement('div');
+        containerBotao.id = 'container-btn-relacionados';
+        containerBotao.innerHTML = `<button id="btn-carregar-relacionados" class="btn-filtro">Carregar Mais</button>`;
+        
+        containerRelacionados.insertAdjacentElement('afterend', containerBotao);
+
+        document.getElementById('btn-carregar-relacionados').addEventListener('click', () => {
+            const produtosRestantes = todosProdutosRelacionados.slice(4);
+            
+            produtosRestantes.forEach(produto => {
+                containerRelacionados.insertAdjacentHTML('beforeend', criarCardRelacionado(produto));
+            });
+
+            containerBotao.remove();
+            if (typeof window.carregarCurtidas === 'function') window.carregarCurtidas();
+        });
+    }
     
     if (typeof window.carregarCurtidas === 'function') window.carregarCurtidas();
 
