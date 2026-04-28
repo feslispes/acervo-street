@@ -8,7 +8,7 @@ const produtosAcervo = [
         precoAtual: "R$ 52,15",
         descricao: "Tecido: 100% Algodão (Fio 30.1).<br><br>A combinação desses fios traz leveza e conforto, ideal para o uso diário.",
         imagem: "imgs/maclaren/camiseta-maclaren.webp",
-        link: "https://shopee.com.br/Camiseta-Sponsorships-Mclaren-Honda-100-Algod%C3%A3o-unissex-i.1078834714.20397807832?xptdk=eb54dea2-10fc-4d7e-ac3d-5316744f754d",
+        link: "https://s.shopee.com.br/6VKHnKJzUh",
         tamanhos: ["P", "M", "G", "GG", "XG/G1", "XXG/G2", "XXXG/G3"],
         imagens: ["imgs/maclaren/camiseta-maclaren.webp", "imgs/maclaren/camiseta-maclaren2.webp", "imgs/maclaren/camiseta-maclaren3.webp", "imgs/maclaren/camiseta-maclaren4.webp", "imgs/maclaren/camiseta-maclaren5.webp"]
     },
